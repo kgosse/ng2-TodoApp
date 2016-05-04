@@ -12,4 +12,8 @@ export class TodoService {
     getTodos() {
         return Promise.resolve(this._todoStore.todos);
     }
+    
+    addTodo(todo: Todo) {
+        this._todoStore.add(todo);
+    }
 }

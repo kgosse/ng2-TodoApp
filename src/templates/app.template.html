@@ -15,6 +15,8 @@
     <todo-list></todo-list>
   </div>
   <div class="block">
-    <input type="text"> &nbsp;&nbsp; <button>Add</button>
+    <form (onsubmit) ="onSubmit()">
+      <input type="text" [(ngModel)]="todo.text"> &nbsp;&nbsp; <button (click)="onSubmit()">Add</button>
+    </form>
   </div>
 </div>

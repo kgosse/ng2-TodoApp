@@ -55,8 +55,8 @@ export class TodoStore {
         this.updateStore();
     }
 
-    add(text: String) {
-        this.todos.push(new Todo(text));
+    add(todo: Todo) {
+        this.todos.push(todo);
         this.updateStore();
     }
 }
