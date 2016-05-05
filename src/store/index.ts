@@ -1,5 +1,6 @@
 export class Todo {
     done: Boolean;
+    editing: Boolean;
 
     private _text: String;
     get text() {
@@ -11,6 +12,7 @@ export class Todo {
 
     constructor(text: String) {
         this.done = false;
+        this.editing = false;
         this.text = text.trim();
     }
 }
@@ -28,14 +30,14 @@ export class TodoStore {
         });
     }
 
-    private updateStore() {
-        localStorage.setItem('todos', JSON.stringify(this.todos));
-    }
-
     private getTasks(done: Boolean) {
         return this.todos.filter((todo: Todo) => todo.done === done);
     }
-
+    
+    updateStore() {
+        localStorage.setItem('todos', JSON.stringify(this.todos));
+    }
+    
     removeDoneTasks() {
         this.todos = this.getTasks(false);
         this.updateStore();

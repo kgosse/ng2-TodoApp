@@ -46,4 +46,8 @@ export class TodoService {
     removeTodo(todo: Todo) {
         this._todoStore.remove(todo);
     }
+    
+    saveTodos() {
+        this._todoStore.updateStore();
+    }
 }
