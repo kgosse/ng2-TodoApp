@@ -6,7 +6,7 @@ import {Information} from "./information";
 
 @Component({
     selector: 'app',
-    styleUrls: ['styles/app.css'],
+    styleUrls: ['assets/styles/app.css'],
     templateUrl: 'templates/app.template.html',
     providers: [
         TodoService

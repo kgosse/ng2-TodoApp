@@ -5,16 +5,16 @@ import {TodoService} from "../services/todo.service";
 @Component({
     selector:'todo-list',
     template:`
-            <style>
-              .done {
-                text-decoration: line-through;
-              }
-            </style>
-            <div *ngFor="#todo of todos">
-              <div>
-                <input type="checkbox" [checked]="todo.done"  (click)="toggleCheck(todo)"> <span [ngClass]="{done: todo.done}">{{todo.text}}</span>
-              </div>
-            </div>
+            <ul id="todo-list" *ngFor="#todo of todos">
+              <li>
+                <div class="view">
+                  <input type="checkbox" class="toggle">
+                  <label>{{todo.text}}</label>
+                  <button class="destroy"></button>
+                </div>
+                <input type="text" (click)="toggleCheck(todo)" [(ngModel)]="todo.text" class="edit"/>
+              </li>
+            </ul>
             `
 })
 export class TodoList implements OnInit{
