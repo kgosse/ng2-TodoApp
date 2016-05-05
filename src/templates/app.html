@@ -1,0 +1,16 @@
+
+<h1 class="title">Todo App</h1>
+<section id="todoapp">
+  <menubar></menubar>
+  <div>
+    <header id="header">
+      <input type="text" id="new-todo" placeholder="What needs to be done?" [(ngModel)]="todo.text" (keyup.enter)="addTodo()">
+    </header>
+
+    <section id="main">
+      <input type="checkbox" id="toggle-all">
+      <todo-list></todo-list>
+    </section>
+
+  </div>
+</section>

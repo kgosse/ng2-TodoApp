@@ -5,8 +5,8 @@ import {TodoService} from "../services/todo.service";
 @Component({
     selector:'todo-list',
     template:`
-            <ul id="todo-list" *ngFor="#todo of todos">
-              <li>
+            <ul id="todo-list">
+              <li *ngFor="#todo of todos">
                 <div class="view">
                   <input type="checkbox" class="toggle">
                   <label>{{todo.text}}</label>

@@ -2,26 +2,26 @@ import {Component} from 'angular2/core';
 import {TodoService} from "../services/todo.service";
 import {TodoList} from "./todo-list";
 import {Todo} from "../store/index";
-import {Information} from "./information";
+import {Menubar} from "./menubar";
 
 @Component({
     selector: 'app',
     styleUrls: ['assets/styles/app.css'],
-    templateUrl: 'templates/app.template.html',
+    templateUrl: 'templates/app.html',
     providers: [
         TodoService
     ],
     directives: [
         TodoList,
-        Information
+        Menubar
     ]
 })
-export class AppComponent {
+export class App {
     todo:Todo = new Todo('');
 
     constructor(private _todoService: TodoService) {}
 
-    onSubmit() {
+    addTodo() {
         if (this.todo.text.trim() === '')
             return;
         this._todoService.addTodo(this.todo);
