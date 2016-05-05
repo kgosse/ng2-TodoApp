@@ -26,7 +26,6 @@ export class TodoStore {
             ret.done = todo.done;
             return ret;
         });
-        this.todos.push(new Todo('todo app'));
     }
 
     private updateStore() {

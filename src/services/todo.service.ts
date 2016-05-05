@@ -1,12 +1,19 @@
-import {Injectable} from "angular2/core";
+import {Injectable, EventEmitter} from "angular2/core";
 import {Todo, TodoStore} from '../store';
+
+interface Action {
+    type: string,
+    payload?: any
+}
 
 @Injectable()
 export class TodoService {
+    public todoEvent: EventEmitter<Action>;
     private _todoStore: TodoStore;
     
     constructor() {
         this._todoStore = new TodoStore();
+        this.todoEvent = new EventEmitter();
     }
     
     getTodos() {
@@ -15,5 +22,20 @@ export class TodoService {
     
     addTodo(todo: Todo) {
         this._todoStore.add(todo);
+    }
+    
+    getTodosLength() {
+        return this._todoStore.todos.length;
+    }
+    
+    getRemainingTasksLength() {
+        return this._todoStore.getRemaining().length;
+    }
+
+    archive() {
+        this._todoStore.removeDoneTasks();
+        this.todoEvent.emit({
+            type: 'archive'
+        });
     }
 }

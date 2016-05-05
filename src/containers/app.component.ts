@@ -2,6 +2,7 @@ import {Component} from 'angular2/core';
 import {TodoService} from "../services/todo.service";
 import {TodoList} from "./todo-list";
 import {Todo} from "../store/index";
+import {Information} from "./information";
 
 @Component({
     selector: 'app',
@@ -11,7 +12,8 @@ import {Todo} from "../store/index";
         TodoService
     ],
     directives: [
-        TodoList
+        TodoList,
+        Information
     ]
 })
 export class AppComponent {
@@ -20,6 +22,8 @@ export class AppComponent {
     constructor(private _todoService: TodoService) {}
 
     onSubmit() {
+        if (this.todo.text.trim() === '')
+            return;
         this._todoService.addTodo(this.todo);
         this.todo = new Todo('');
     }
