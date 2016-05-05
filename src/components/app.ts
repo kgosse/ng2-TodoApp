@@ -27,4 +27,8 @@ export class App {
         this._todoService.addTodo(this.todo);
         this.todo = new Todo('');
     }
+    
+    toggleTodos() {
+        this._todoService.toggleTodos();
+    }
 }

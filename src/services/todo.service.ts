@@ -38,4 +38,12 @@ export class TodoService {
             type: 'archive'
         });
     }
+
+    toggleTodos() {
+        this._todoStore.toggleAll();
+    }
+    
+    removeTodo(todo: Todo) {
+        this._todoStore.remove(todo);
+    }
 }

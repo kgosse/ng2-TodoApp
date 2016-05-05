@@ -6,13 +6,13 @@ import {TodoService} from "../services/todo.service";
     selector:'todo-list',
     template:`
             <ul id="todo-list">
-              <li *ngFor="#todo of todos">
+              <li *ngFor="#todo of todos" [ngClass]="{completed: todo.done}">
                 <div class="view">
-                  <input type="checkbox" class="toggle">
+                  <input type="checkbox" class="toggle" [checked]="todo.done" (click)="toggleCheck(todo)">
                   <label>{{todo.text}}</label>
-                  <button class="destroy"></button>
+                  <button class="destroy" (click)="removeTodo(todo)"></button>
                 </div>
-                <input type="text" (click)="toggleCheck(todo)" [(ngModel)]="todo.text" class="edit"/>
+                <input type="text" [(ngModel)]="todo.text" class="edit"/>
               </li>
             </ul>
             `
@@ -31,6 +31,11 @@ export class TodoList implements OnInit{
     
     toggleCheck(todo) {
         todo.done = !todo.done;
+    }
+    
+    removeTodo(todo:Todo) {
+        this._todoService.removeTodo(todo);
+        console.log(this.todos);
     }
 
     ngOnInit() {

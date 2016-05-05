@@ -58,4 +58,15 @@ export class TodoStore {
         this.todos.push(todo);
         this.updateStore();
     }
+
+    toggleAll() {
+        for (let todo of this.todos)
+            todo.done = !todo.done;
+        this.updateStore();
+    }
+
+    remove(todo: Todo) {
+        this.todos.splice(this.todos.indexOf(todo), 1);
+        this.updateStore();
+    }
 }
