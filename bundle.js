@@ -406,8 +406,7 @@ webpackJsonp([0],{
 	    App = __decorate([
 	        core_1.Component({
 	            selector: 'app',
-	            styleUrls: ['assets/styles/app.css'],
-	            templateUrl: 'templates/app.html',
+	            template: "\n      <h1 class=\"title\">Todo App</h1>\n      <section id=\"todoapp\">\n        <menubar></menubar>\n        <div>\n          <header id=\"header\">\n            <input type=\"text\" id=\"new-todo\" placeholder=\"What needs to be done?\" [(ngModel)]=\"todo.text\" (keyup.enter)=\"addTodo()\">\n          </header>\n          <section id=\"main\">\n            <input type=\"checkbox\" id=\"toggle-all\" (click)=\"toggleTodos()\">\n            <todo-list></todo-list>\n          </section>\n        </div>\n      </section>\n      <footer id=\"info\">\n        <p>Double-click to edit a todo</p>\n        <p>Created by <a href=\"http://kgosse.github.io/resumecard\" target=\"_blank\">kgosse</a></p>\n        <p>Based on <a href=\"http://todomvc.com\" target=\"_blank\">TodoMVC</a></p>\n      </footer>\n    ",
 	            providers: [
 	                todo_service_1.TodoService
 	            ],
