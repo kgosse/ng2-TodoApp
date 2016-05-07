@@ -6,8 +6,26 @@ import {Menubar} from "./menubar";
 
 @Component({
     selector: 'app',
-    styleUrls: ['assets/styles/app.css'],
-    templateUrl: 'templates/app.html',
+    template: `
+      <h1 class="title">Todo App</h1>
+      <section id="todoapp">
+        <menubar></menubar>
+        <div>
+          <header id="header">
+            <input type="text" id="new-todo" placeholder="What needs to be done?" [(ngModel)]="todo.text" (keyup.enter)="addTodo()">
+          </header>
+          <section id="main">
+            <input type="checkbox" id="toggle-all" (click)="toggleTodos()">
+            <todo-list></todo-list>
+          </section>
+        </div>
+      </section>
+      <footer id="info">
+        <p>Double-click to edit a todo</p>
+        <p>Created by <a href="http://kgosse.github.io/resumecard" target="_blank">kgosse</a></p>
+        <p>Based on <a href="http://todomvc.com" target="_blank">TodoMVC</a></p>
+      </footer>
+    `,    
     providers: [
         TodoService
     ],
