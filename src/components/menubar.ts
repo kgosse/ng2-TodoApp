@@ -1,9 +1,11 @@
 
 import {Component} from "angular2/core";
 import {TodoService} from "../services/todo.service";
+import {StatusSelector} from "./status-selector";
 
 @Component({
     selector: 'menubar',
+    directives: [ StatusSelector ],
     template: `
       <style>
         .archive {
@@ -21,11 +23,7 @@ import {TodoService} from "../services/todo.service";
         </span>
         <div>
           <input type="text" placeholder="Filter by text"> &nbsp;&nbsp;
-          <select name="" id="">
-            <option value="all">All</option>
-            <option value="Active">Active</option>
-            <option value="Completed">Completed</option>
-          </select>
+          <status-selector></status-selector>
         </div>
         <a href="#" (click)="archive()" class="archive">Archive (<strong>{{getTodosLength() - getRemainingTasksLength()}}</strong>)</a>
       </div>

@@ -1,12 +1,17 @@
 import {Component, OnInit} from "angular2/core";
 import {Todo} from "../store/index";
 import {TodoService} from "../services/todo.service";
+import {Action} from "../interfaces/Action";
+import {ARCHIVE, STATUS_CHANGE} from "../constants/ActionTypes";
+import {ALL} from "../constants/Statuses";
+import {StatusPipe} from "../pipes/status.pipe";
 
 @Component({
     selector:'todo-list',
+    pipes: [StatusPipe],
     template:`
             <ul id="todo-list">
-              <li *ngFor="#todo of todos" [class.completed]="todo.done" [class.editing]="todo.editing">
+              <li *ngFor="#todo of todos| status: status" [class.completed]="todo.done" [class.editing]="todo.editing">
                 <div class="view">
                   <input type="checkbox" class="toggle" [checked]="todo.done" (click)="toggleCheck(todo)">
                   <label (dblclick)="editTodo(todo)">{{todo.text}}</label>
@@ -19,10 +24,22 @@ import {TodoService} from "../services/todo.service";
 })
 export class TodoList implements OnInit{
     todos: Todo[];
+    status: "";
 
 
     constructor(private _todoService: TodoService){
-        this._todoService.todoEvent.subscribe(() => this.getTodos());
+        this._todoService.todoEvent.subscribe((action:Action) => {
+            switch (action.type) {
+                case ARCHIVE:
+                    this.getTodos();
+                    break;
+                case STATUS_CHANGE:
+                    if (action.payload === ALL)
+                        this.getTodos();
+                    this.status = action.payload;
+                    break;
+            }
+        });
     }
 
 
