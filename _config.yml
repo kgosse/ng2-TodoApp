@@ -10,8 +10,8 @@ title: angular 2 todo app - kgosse
 email: gossekevin1@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   angular 2 todo app by kevin gosse (gossekevin1@gmail.com)
-baseurl: "https://kgosse.github.io/ng2-TodoApp" # the subpath of your site, e.g. /blog
-url: "https://kgosse.github.io/ng2-TodoApp" # the base hostname & protocol for your site
+baseurl: "https://kgosse.github.io/ng2todoapp" # the subpath of your site, e.g. /blog
+url: "https://kgosse.github.io/ng2todoapp" # the base hostname & protocol for your site
 twitter_username: kevingosse10
 github_username:  kgosse
 
