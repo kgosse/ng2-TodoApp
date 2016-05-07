@@ -1,7 +1,7 @@
 import {Injectable, EventEmitter} from "angular2/core";
 import {Todo, TodoStore} from '../store';
 import {Action} from "../interfaces/Action";
-import {STATUS_CHANGE, ARCHIVE} from "../constants/ActionTypes";
+import {STATUS_CHANGE, ARCHIVE, TEXT_CHANGE} from "../constants/ActionTypes";
 
 
 
@@ -55,5 +55,12 @@ export class TodoService {
             type: STATUS_CHANGE,
             payload: val 
         });
+    }
+    
+    textChange(val: string) {
+        this.todoEvent.emit({
+            type: TEXT_CHANGE,
+            payload: val.trim()
+        })
     }
 }
