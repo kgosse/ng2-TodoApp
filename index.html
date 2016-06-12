@@ -7,11 +7,10 @@ layout:
 	<head>
     <meta charset=UTF-8>
 		<title>Todo App - kgosse</title>
-		<base href="/">
+		<script src="{{ "/vendor.bundle.js" | prepend: site.baseurl }}"></script>
 	</head>
 	<body>
 		<app></app>
-		<script src="{{ "/vendor.bundle.js" | prepend: site.baseurl }}"></script>
 		<script src="{{ "/bundle.js" | prepend: site.baseurl }}"></script>
 	</body>
 </html>
