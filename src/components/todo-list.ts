@@ -1,4 +1,4 @@
-import {Component, OnInit} from "angular2/core";
+import {Component, OnInit} from "@angular/core";
 import {Todo} from "../store/index";
 import {TodoService} from "../services/todo.service";
 import {Action} from "../interfaces/Action";
@@ -9,10 +9,10 @@ import {TextPipe} from "../pipes/text.pipe";
 
 @Component({
     selector:'todo-list',
-    pipes: [StatusPipe, TextPipe],
+    pipes: <any>[StatusPipe, TextPipe],
     template:`
             <ul id="todo-list">
-              <li *ngFor="#todo of (todos | status: status) | text: text" [class.completed]="todo.done" [class.editing]="todo.editing">
+              <li *ngFor="let todo of (todos | status: _status) | text: _text" [class.completed]="todo.done" [class.editing]="todo.editing">
                 <div class="view">
                   <input type="checkbox" class="toggle" [checked]="todo.done" (click)="toggleCheck(todo)">
                   <label (dblclick)="editTodo(todo)">{{todo.text}}</label>
@@ -25,8 +25,8 @@ import {TextPipe} from "../pipes/text.pipe";
 })
 export class TodoList implements OnInit{
     todos: Todo[];
-    status: "";
-    text: "";
+    _status: "";
+    _text: "";
 
 
     constructor(private _todoService: TodoService){
@@ -38,10 +38,10 @@ export class TodoList implements OnInit{
                 case STATUS_CHANGE:
                     if (action.payload === ALL)
                         this.getTodos();
-                    this.status = action.payload;
+                    this._status = action.payload;
                     break;
                 case TEXT_CHANGE:
-                    this.text = action.payload;
+                    this._text = action.payload;
                     break;
             }
         });

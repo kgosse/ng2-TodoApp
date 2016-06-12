@@ -1,6 +1,8 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 var path = require('path');
+
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ForkCheckerPlugin = require('awesome-typescript-loader').ForkCheckerPlugin;
 
 module.exports = {
   entry: {
@@ -11,7 +13,9 @@ module.exports = {
     path: "./dist",
     filename: "bundle.js"
   },
-  plugins: [
+  plugins: [    
+    new ForkCheckerPlugin(),
+    new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js'),
     new HtmlWebpackPlugin({
       inject: false,
@@ -25,12 +29,11 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.ts$/, loader: 'ts-loader' },
+      { test: /\.ts$/, loader: 'awesome-typescript-loader', include: path.resolve(__dirname, "src") },
       { test: /\.css$/, loader: "style-loader!css-loader" },
       { test: /\.png$/, loader: "url-loader?limit=100000" },
       { test: /\.jpg$/, loader: "file-loader" }
-    ],
-    noParse: [ path.join(__dirname, 'node_modules', 'angular2', 'bundles') ]
+    ]
   },
 
   devServer: {
