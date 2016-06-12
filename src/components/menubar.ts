@@ -1,11 +1,11 @@
 
-import {Component} from "angular2/core";
+import {Component} from "@angular/core";
 import {TodoService} from "../services/todo.service";
 import {StatusSelector} from "./status-selector";
 
 @Component({
     selector: 'menubar',
-    directives: [ StatusSelector ],
+    directives: <any>[ StatusSelector ],
     template: `
       <style>
         .archive {
@@ -40,7 +40,6 @@ export class Menubar {
     }
     
     textChange(val) {
-        console.log('oninput');
         this._todoService.textChange(val);
     }
 }
