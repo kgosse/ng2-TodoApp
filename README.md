@@ -2,7 +2,6 @@
 
 I did the classical todo app in angular 2. You can test the work by clicking on this:
 [view app][1]  
-The project is on github: [sources][2]
 
 By the time I'm writing this post, angular 2 is still in release candidate version. So my goal was
 to play with this new framework by making a somewhat useful project.
