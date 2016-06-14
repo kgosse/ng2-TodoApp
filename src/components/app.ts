@@ -26,10 +26,10 @@ import {Menubar} from "./menubar";
         <p>Based on <a href="http://todomvc.com" target="_blank">TodoMVC</a></p>
       </footer>
     `,    
-    providers: [
+    providers: <any>[
         TodoService
     ],
-    directives: [
+    directives: <any>[
         TodoList,
         Menubar
     ]
